@@ -165,7 +165,7 @@ export default function InteractiveBrainMap() {
                       opacity="0.6"
                     />
                     
-                    {/* Brain regions with realistic positions */}
+                    {/* Brain regions with realistic anatomical shapes */}
                     {Object.entries(brainRegions).map(([key, region], index) => {
                       const positions = {
                         frontal: { x: 160, y: 140 },
@@ -177,19 +177,122 @@ export default function InteractiveBrainMap() {
                       };
                       const pos = positions[key] || { x: 200, y: 150 };
                       
+                      // Different anatomical shapes for each brain region
+                      const getRegionShape = (regionKey, position) => {
+                        const opacity = selectedRegion === regionKey ? 0.9 : 0.6;
+                        const commonProps = {
+                          fill: region.color,
+                          opacity,
+                          className: "cursor-pointer hover:opacity-80 transition-all duration-300 transform hover:scale-110",
+                          onClick: () => setSelectedRegion(selectedRegion === regionKey ? null : regionKey),
+                          stroke: "white",
+                          strokeWidth: "2"
+                        };
+
+                        switch (regionKey) {
+                          case 'frontal':
+                            // Frontal lobe - rounded anterior shape
+                            return (
+                              <path
+                                d={`M ${position.x-25} ${position.y-15} 
+                                    C ${position.x-30} ${position.y-10}, ${position.x-30} ${position.y+10}, ${position.x-25} ${position.y+15}
+                                    C ${position.x-10} ${position.y+20}, ${position.x+10} ${position.y+20}, ${position.x+25} ${position.y+15}
+                                    C ${position.x+30} ${position.y+10}, ${position.x+30} ${position.y-10}, ${position.x+25} ${position.y-15}
+                                    C ${position.x+10} ${position.y-20}, ${position.x-10} ${position.y-20}, ${position.x-25} ${position.y-15} Z`}
+                                {...commonProps}
+                              />
+                            );
+                          case 'parietal':
+                            // Parietal lobe - crown-like shape
+                            return (
+                              <path
+                                d={`M ${position.x-20} ${position.y-10} 
+                                    C ${position.x-25} ${position.y-15}, ${position.x-15} ${position.y-25}, ${position.x} ${position.y-20}
+                                    C ${position.x+15} ${position.y-25}, ${position.x+25} ${position.y-15}, ${position.x+20} ${position.y-10}
+                                    C ${position.x+25} ${position.y+5}, ${position.x+15} ${position.y+15}, ${position.x} ${position.y+10}
+                                    C ${position.x-15} ${position.y+15}, ${position.x-25} ${position.y+5}, ${position.x-20} ${position.y-10} Z`}
+                                {...commonProps}
+                              />
+                            );
+                          case 'temporal':
+                            // Temporal lobe - elongated lateral shape
+                            return (
+                              <ellipse
+                                cx={position.x}
+                                cy={position.y}
+                                rx="25"
+                                ry="12"
+                                {...commonProps}
+                              />
+                            );
+                          case 'occipital':
+                            // Occipital lobe - posterior pointed shape
+                            return (
+                              <path
+                                d={`M ${position.x-15} ${position.y-12} 
+                                    C ${position.x-20} ${position.y-5}, ${position.x-20} ${position.y+5}, ${position.x-15} ${position.y+12}
+                                    C ${position.x-5} ${position.y+15}, ${position.x+5} ${position.y+15}, ${position.x+15} ${position.y+12}
+                                    C ${position.x+25} ${position.y+5}, ${position.x+30} ${position.y-5}, ${position.x+25} ${position.y-12}
+                                    C ${position.x+15} ${position.y-15}, ${position.x-5} ${position.y-15}, ${position.x-15} ${position.y-12} Z`}
+                                {...commonProps}
+                              />
+                            );
+                          case 'hippocampus':
+                            // Hippocampus - seahorse-like curved shape
+                            return (
+                              <path
+                                d={`M ${position.x-8} ${position.y-15} 
+                                    C ${position.x-12} ${position.y-10}, ${position.x-10} ${position.y-5}, ${position.x-5} ${position.y}
+                                    C ${position.x} ${position.y+5}, ${position.x+5} ${position.y+10}, ${position.x+8} ${position.y+15}
+                                    C ${position.x+12} ${position.y+12}, ${position.x+15} ${position.y+8}, ${position.x+10} ${position.y+5}
+                                    C ${position.x+5} ${position.y}, ${position.x} ${position.y-5}, ${position.x-5} ${position.y-10}
+                                    C ${position.x-8} ${position.y-12}, ${position.x-8} ${position.y-15} Z`}
+                                {...commonProps}
+                              />
+                            );
+                          case 'cerebellum':
+                            // Cerebellum - folded, segmented appearance
+                            return (
+                              <g>
+                                <ellipse cx={position.x} cy={position.y} rx="20" ry="15" {...commonProps} />
+                                <path
+                                  d={`M ${position.x-15} ${position.y-5} Q ${position.x-5} ${position.y-8}, ${position.x+5} ${position.y-5} Q ${position.x+15} ${position.y-8}, ${position.x+15} ${position.y-5}`}
+                                  fill="none"
+                                  stroke="white"
+                                  strokeWidth="1"
+                                  opacity="0.7"
+                                />
+                                <path
+                                  d={`M ${position.x-15} ${position.y} Q ${position.x-5} ${position.y-3}, ${position.x+5} ${position.y} Q ${position.x+15} ${position.y-3}, ${position.x+15} ${position.y}`}
+                                  fill="none"
+                                  stroke="white"
+                                  strokeWidth="1"
+                                  opacity="0.7"
+                                />
+                                <path
+                                  d={`M ${position.x-15} ${position.y+5} Q ${position.x-5} ${position.y+2}, ${position.x+5} ${position.y+5} Q ${position.x+15} ${position.y+2}, ${position.x+15} ${position.y+5}`}
+                                  fill="none"
+                                  stroke="white"
+                                  strokeWidth="1"
+                                  opacity="0.7"
+                                />
+                              </g>
+                            );
+                          default:
+                            return (
+                              <circle
+                                cx={position.x}
+                                cy={position.y}
+                                r="20"
+                                {...commonProps}
+                              />
+                            );
+                        }
+                      };
+                      
                       return (
                         <g key={key}>
-                          <circle
-                            cx={pos.x}
-                            cy={pos.y}
-                            r="20"
-                            fill={region.color}
-                            opacity={selectedRegion === key ? 0.9 : 0.6}
-                            className="cursor-pointer hover:opacity-80 transition-all duration-300 transform hover:scale-110"
-                            onClick={() => setSelectedRegion(selectedRegion === key ? null : key)}
-                            stroke="white"
-                            strokeWidth="2"
-                          />
+                          {getRegionShape(key, pos)}
                           <text
                             x={pos.x}
                             y={pos.y + 35}
@@ -279,21 +382,17 @@ export default function InteractiveBrainMap() {
                     <Activity className="text-blue-500 mr-3" size={24} />
                     <h4 className="font-semibold text-dark-slate">{network.name}</h4>
                   </div>
-                  <div className="space-y-3 text-sm">
-                    <div>
-                      <p className="text-gray-600 mb-1"><strong>Función:</strong></p>
-                      <p>{network.description}</p>
-                    </div>
-                    <div>
-                      <p className="text-gray-600 mb-1"><strong>En superdotados:</strong></p>
-                      <p className="text-blue-700">{network.giftedFeature}</p>
+                  <p className="text-sm text-gray-600 mb-3">{network.description}</p>
+                  <div className="space-y-2">
+                    <div className="p-2 bg-blue-50 rounded">
+                      <p className="text-xs font-semibold text-blue-600">EN SUPERDOTADOS</p>
+                      <p className="text-sm">{network.giftedFeature}</p>
                     </div>
                     <div className="flex justify-between items-center">
-                      <span className="text-gray-600">Eficiencia:</span>
-                      <Badge className="bg-green-100 text-green-800">{network.efficiency}</Badge>
-                    </div>
-                    <div className="text-xs text-gray-500">
-                      <strong>Base de investigación:</strong> {network.studies}
+                      <Badge variant="outline" className="text-xs">
+                        {network.efficiency}
+                      </Badge>
+                      <span className="text-xs text-gray-500">{network.studies}</span>
                     </div>
                   </div>
                 </div>
@@ -302,27 +401,65 @@ export default function InteractiveBrainMap() {
           </CardContent>
         </Card>
 
-        {/* Developmental Timeline */}
+        {/* Developmental Stages */}
+        <Card className="shadow-lg mb-16">
+          <CardContent className="p-8">
+            <h3 className="text-2xl font-semibold text-dark-slate mb-6 text-center">
+              Desarrollo Neural por Etapas
+            </h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {developmentalStages.map((stage, index) => (
+                <div key={index} className="relative">
+                  <div className="border rounded-lg p-6 hover:shadow-lg transition-shadow h-full">
+                    <div className="flex items-center mb-4">
+                      <Target className="text-purple-500 mr-3" size={20} />
+                      <h4 className="font-semibold text-dark-slate">{stage.age}</h4>
+                    </div>
+                    <h5 className="font-semibold text-sm text-purple-600 mb-2">{stage.development}</h5>
+                    <p className="text-sm text-gray-600 mb-3">{stage.characteristics}</p>
+                    <div className="p-2 bg-purple-50 rounded">
+                      <p className="text-xs font-semibold text-purple-600">IMPLICACIONES</p>
+                      <p className="text-xs">{stage.implications}</p>
+                    </div>
+                  </div>
+                  {index < developmentalStages.length - 1 && (
+                    <div className="hidden lg:block absolute top-1/2 -right-3 transform -translate-y-1/2 z-10">
+                      <div className="w-6 h-6 bg-purple-100 rounded-full flex items-center justify-center">
+                        <div className="w-2 h-2 bg-purple-500 rounded-full"></div>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Research Methodology */}
         <Card className="shadow-lg">
           <CardContent className="p-8">
             <h3 className="text-2xl font-semibold text-dark-slate mb-6 text-center">
-              Desarrollo Neural a lo Largo de la Vida
+              Metodología de Investigación
             </h3>
-            <div className="space-y-6">
-              {developmentalStages.map((stage, index) => (
-                <div key={index} className="flex items-center space-x-6">
-                  <div className="flex-shrink-0 w-24 text-center">
-                    <div className="bg-blue-100 rounded-full px-3 py-1 text-sm font-semibold text-blue-800">
-                      {stage.age}
-                    </div>
-                  </div>
-                  <div className="flex-1 border-l-4 border-blue-500 pl-6">
-                    <h4 className="font-semibold text-dark-slate mb-2">{stage.development}</h4>
-                    <p className="text-sm text-gray-600 mb-2">{stage.characteristics}</p>
-                    <p className="text-sm text-blue-700 font-medium">{stage.implications}</p>
-                  </div>
-                </div>
-              ))}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <div className="text-center p-6 border rounded-lg">
+                <Brain className="mx-auto mb-4 text-blue-500" size={32} />
+                <h4 className="font-semibold mb-2">Neuroimagen Funcional</h4>
+                <p className="text-sm text-gray-600">fMRI, PET, SPECT para actividad cerebral</p>
+                <Badge variant="outline" className="mt-2">8,903 estudios</Badge>
+              </div>
+              <div className="text-center p-6 border rounded-lg">
+                <Zap className="mx-auto mb-4 text-yellow-500" size={32} />
+                <h4 className="font-semibold mb-2">Electrofisiología</h4>
+                <p className="text-sm text-gray-600">EEG, MEG para timing neural</p>
+                <Badge variant="outline" className="mt-2">3,456 estudios</Badge>
+              </div>
+              <div className="text-center p-6 border rounded-lg">
+                <Eye className="mx-auto mb-4 text-green-500" size={32} />
+                <h4 className="font-semibold mb-2">Neuroimagen Estructural</h4>
+                <p className="text-sm text-gray-600">MRI, DTI para anatomía cerebral</p>
+                <Badge variant="outline" className="mt-2">2,847 estudios</Badge>
+              </div>
             </div>
           </CardContent>
         </Card>
