@@ -135,113 +135,107 @@ export default function InteractiveBrainMap() {
               <div className="relative">
                 <div className="bg-gradient-to-br from-blue-100 to-purple-100 rounded-xl p-8 h-96 flex items-center justify-center">
                   <svg viewBox="0 0 500 350" className="w-full h-full">
-                    {/* Detailed brain anatomy background */}
+                    {/* Advanced brain anatomy definitions */}
                     <defs>
                       <linearGradient id="brainGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" style={{stopColor:"#f8fafc", stopOpacity:0.8}} />
-                        <stop offset="50%" style={{stopColor:"#e2e8f0", stopOpacity:0.6}} />
-                        <stop offset="100%" style={{stopColor:"#cbd5e1", stopOpacity:0.4}} />
+                        <stop offset="0%" style={{stopColor:"#f1f5f9", stopOpacity:0.9}} />
+                        <stop offset="50%" style={{stopColor:"#e2e8f0", stopOpacity:0.7}} />
+                        <stop offset="100%" style={{stopColor:"#cbd5e1", stopOpacity:0.5}} />
                       </linearGradient>
-                      <pattern id="brainTexture" patternUnits="userSpaceOnUse" width="4" height="4">
-                        <rect width="4" height="4" fill="none"/>
-                        <circle cx="2" cy="2" r="0.5" fill="#94a3b8" opacity="0.3"/>
+                      <linearGradient id="brainShadow" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" style={{stopColor:"#64748b", stopOpacity:0.1}} />
+                        <stop offset="100%" style={{stopColor:"#475569", stopOpacity:0.3}} />
+                      </linearGradient>
+                      <pattern id="cortexTexture" patternUnits="userSpaceOnUse" width="3" height="3">
+                        <rect width="3" height="3" fill="none"/>
+                        <circle cx="1.5" cy="1.5" r="0.3" fill="#94a3b8" opacity="0.2"/>
                       </pattern>
                     </defs>
                     
-                    {/* Main brain outline - anatomically correct sagittal view */}
+                    {/* Detailed anatomically correct brain silhouette */}
                     <path
-                      d="M 100 180 
-                         C 80 120, 120 80, 180 70
-                         C 220 65, 280 70, 320 80
-                         C 360 90, 400 120, 420 160
-                         C 430 180, 425 200, 420 220
-                         C 415 240, 400 260, 380 275
-                         C 350 290, 320 295, 290 300
-                         C 260 305, 230 300, 200 295
-                         C 170 290, 140 280, 120 260
-                         C 105 240, 100 210, 100 180 Z"
+                      d="M 90 175 
+                         C 70 110, 110 70, 175 60
+                         C 210 55, 270 58, 315 68
+                         C 365 78, 410 110, 435 155
+                         C 445 175, 442 195, 438 215
+                         C 435 235, 425 250, 410 265
+                         C 395 280, 375 290, 350 295
+                         C 320 300, 290 298, 265 295
+                         C 240 292, 215 287, 190 280
+                         C 165 273, 140 260, 120 245
+                         C 100 230, 88 205, 90 175 Z"
                       fill="url(#brainGradient)"
                       stroke="#6366F1"
                       strokeWidth="2"
-                      opacity="0.3"
-                    />
-                    
-                    {/* Brain stem detailed structure */}
-                    <ellipse cx="260" cy="300" rx="12" ry="20" fill="#8B5CF6" opacity="0.4"/>
-                    <ellipse cx="260" cy="295" rx="8" ry="15" fill="#A78BFA" opacity="0.3"/>
-                    <ellipse cx="260" cy="290" rx="5" ry="10" fill="#C4B5FD" opacity="0.2"/>
-                    
-                    {/* Cerebral fissures and sulci */}
-                    <path
-                      d="M 180 120 C 220 110, 280 110, 320 120"
-                      fill="none"
-                      stroke="#4F46E5"
-                      strokeWidth="3"
                       opacity="0.4"
                     />
-                    <path
-                      d="M 160 150 C 200 140, 260 140, 300 150"
-                      fill="none"
-                      stroke="#4F46E5"
-                      strokeWidth="2"
-                      opacity="0.3"
-                    />
-                    <path
-                      d="M 140 180 C 180 170, 240 170, 280 180"
-                      fill="none"
-                      stroke="#4F46E5"
-                      strokeWidth="2"
-                      opacity="0.3"
-                    />
                     
-                    {/* Corpus callosum */}
-                    <ellipse cx="240" cy="155" rx="40" ry="8" fill="#F59E0B" opacity="0.3"/>
-                    <ellipse cx="240" cy="155" rx="35" ry="6" fill="#FCD34D" opacity="0.2"/>
-                    
-                    {/* Ventricular system */}
+                    {/* Brain shadow for depth */}
                     <path
-                      d="M 200 140 C 220 135, 260 135, 280 140 C 275 150, 260 155, 240 155 C 220 155, 205 150, 200 140"
-                      fill="#3B82F6"
+                      d="M 95 180 
+                         C 75 115, 115 75, 180 65
+                         C 215 60, 275 63, 320 73
+                         C 370 83, 415 115, 440 160
+                         C 450 180, 447 200, 443 220
+                         C 440 240, 430 255, 415 270
+                         C 400 285, 380 295, 355 300
+                         C 325 305, 295 303, 270 300
+                         C 245 297, 220 292, 195 285
+                         C 170 278, 145 265, 125 250
+                         C 105 235, 93 210, 95 180 Z"
+                      fill="url(#brainShadow)"
                       opacity="0.2"
                     />
                     
-                    {/* Detailed cerebellum structure */}
-                    <ellipse cx="320" cy="220" rx="25" ry="20" fill="#6366F1" opacity="0.3"/>
-                    <g opacity="0.4">
-                      <path d="M 300 210 Q 310 205, 320 210 Q 330 205, 340 210" stroke="#4F46E5" strokeWidth="1" fill="none"/>
-                      <path d="M 300 215 Q 310 210, 320 215 Q 330 210, 340 215" stroke="#4F46E5" strokeWidth="1" fill="none"/>
-                      <path d="M 300 220 Q 310 215, 320 220 Q 330 215, 340 220" stroke="#4F46E5" strokeWidth="1" fill="none"/>
-                      <path d="M 300 225 Q 310 220, 320 225 Q 330 220, 340 225" stroke="#4F46E5" strokeWidth="1" fill="none"/>
-                      <path d="M 300 230 Q 310 225, 320 230 Q 330 225, 340 230" stroke="#4F46E5" strokeWidth="1" fill="none"/>
+                    {/* Cerebral cortex layers */}
+                    <g opacity="0.3">
+                      <path d="M 110 140 C 160 120, 220 118, 280 125 C 320 130, 360 140, 390 160" 
+                            stroke="#4F46E5" strokeWidth="2" fill="none"/>
+                      <path d="M 115 160 C 165 140, 225 138, 285 145 C 325 150, 365 160, 385 175" 
+                            stroke="#4F46E5" strokeWidth="1.5" fill="none"/>
+                      <path d="M 120 180 C 170 160, 230 158, 290 165 C 330 170, 370 180, 380 190" 
+                            stroke="#4F46E5" strokeWidth="1.5" fill="none"/>
                     </g>
                     
-                    {/* Gyri and sulci pattern */}
-                    <g opacity="0.2">
-                      <path d="M 120 140 Q 140 135, 160 140 Q 180 135, 200 140" stroke="#6366F1" strokeWidth="1" fill="none"/>
-                      <path d="M 120 160 Q 140 155, 160 160 Q 180 155, 200 160" stroke="#6366F1" strokeWidth="1" fill="none"/>
-                      <path d="M 120 180 Q 140 175, 160 180 Q 180 175, 200 180" stroke="#6366F1" strokeWidth="1" fill="none"/>
-                      <path d="M 120 200 Q 140 195, 160 200 Q 180 195, 200 200" stroke="#6366F1" strokeWidth="1" fill="none"/>
-                      
-                      <path d="M 280 120 Q 300 115, 320 120 Q 340 115, 360 120" stroke="#6366F1" strokeWidth="1" fill="none"/>
-                      <path d="M 280 140 Q 300 135, 320 140 Q 340 135, 360 140" stroke="#6366F1" strokeWidth="1" fill="none"/>
-                      <path d="M 280 160 Q 300 155, 320 160 Q 340 155, 360 160" stroke="#6366F1" strokeWidth="1" fill="none"/>
-                      <path d="M 280 180 Q 300 175, 320 180 Q 340 175, 360 180" stroke="#6366F1" strokeWidth="1" fill="none"/>
+                    {/* Detailed brain stem */}
+                    <ellipse cx="265" cy="295" rx="15" ry="25" fill="#8B5CF6" opacity="0.4"/>
+                    <ellipse cx="265" cy="290" rx="12" ry="20" fill="#A78BFA" opacity="0.3"/>
+                    <ellipse cx="265" cy="285" rx="8" ry="15" fill="#C4B5FD" opacity="0.2"/>
+                    
+                    {/* Corpus callosum - connecting bridge */}
+                    <ellipse cx="245" cy="160" rx="45" ry="10" fill="#F59E0B" opacity="0.3"/>
+                    <ellipse cx="245" cy="160" rx="40" ry="8" fill="#FCD34D" opacity="0.2"/>
+                    
+                    {/* Ventricular system */}
+                    <path d="M 205 145 C 225 140, 265 140, 285 145 C 280 155, 265 160, 245 160 C 225 160, 210 155, 205 145"
+                          fill="#3B82F6" opacity="0.2"/>
+                    
+                    {/* Cerebellum with detailed folds */}
+                    <ellipse cx="385" cy="230" rx="30" ry="25" fill="#6366F1" opacity="0.3"/>
+                    <g opacity="0.5">
+                      <path d="M 360 215 Q 370 210, 385 215 Q 400 210, 415 215" stroke="#4F46E5" strokeWidth="1" fill="none"/>
+                      <path d="M 360 220 Q 370 215, 385 220 Q 400 215, 415 220" stroke="#4F46E5" strokeWidth="1" fill="none"/>
+                      <path d="M 360 225 Q 370 220, 385 225 Q 400 220, 415 225" stroke="#4F46E5" strokeWidth="1" fill="none"/>
+                      <path d="M 360 230 Q 370 225, 385 230 Q 400 225, 415 230" stroke="#4F46E5" strokeWidth="1" fill="none"/>
+                      <path d="M 360 235 Q 370 230, 385 235 Q 400 230, 415 235" stroke="#4F46E5" strokeWidth="1" fill="none"/>
+                      <path d="M 360 240 Q 370 235, 385 240 Q 400 235, 415 240" stroke="#4F46E5" strokeWidth="1" fill="none"/>
                     </g>
                     
-                    {/* Textured brain regions for realism */}
-                    <rect x="100" y="100" width="150" height="100" fill="url(#brainTexture)" opacity="0.1"/>
-                    <rect x="250" y="100" width="150" height="100" fill="url(#brainTexture)" opacity="0.1"/>
+                    {/* Cortical texture overlay */}
+                    <rect x="90" y="100" width="200" height="120" fill="url(#cortexTexture)" opacity="0.1"/>
+                    <rect x="250" y="100" width="180" height="120" fill="url(#cortexTexture)" opacity="0.1"/>
                     
-                    {/* Brain regions with anatomically correct positions */}
+                    {/* Brain regions with precise anatomical shapes and positions */}
                     {Object.entries(brainRegions).map(([key, region], index) => {
-                      // Positions adjusted to match real brain anatomy in sagittal view
+                      // Scientifically accurate positions based on brain anatomy
                       const positions = {
-                        frontal: { x: 140, y: 120 },      // Anterior frontal region
-                        parietal: { x: 260, y: 110 },     // Superior parietal region
-                        temporal: { x: 180, y: 180 },     // Lateral temporal region
-                        occipital: { x: 340, y: 160 },    // Posterior occipital region
-                        hippocampus: { x: 220, y: 160 },  // Deep medial temporal
-                        cerebellum: { x: 320, y: 220 }    // Posterior inferior position
+                        frontal: { x: 150, y: 130 },      // Prefrontal cortex - anterior region
+                        parietal: { x: 280, y: 115 },     // Superior parietal - crown region
+                        temporal: { x: 190, y: 190 },     // Temporal lobe - lateral position
+                        occipital: { x: 380, y: 165 },    // Occipital - posterior region
+                        hippocampus: { x: 230, y: 170 },  // Hippocampus - medial temporal
+                        cerebellum: { x: 385, y: 230 }    // Cerebellum - posterior inferior
                       };
                       const pos = positions[key] || { x: 200, y: 150 };
                       
@@ -259,91 +253,149 @@ export default function InteractiveBrainMap() {
 
                         switch (regionKey) {
                           case 'frontal':
-                            // Frontal lobe - rounded anterior shape
-                            return (
-                              <path
-                                d={`M ${position.x-25} ${position.y-15} 
-                                    C ${position.x-30} ${position.y-10}, ${position.x-30} ${position.y+10}, ${position.x-25} ${position.y+15}
-                                    C ${position.x-10} ${position.y+20}, ${position.x+10} ${position.y+20}, ${position.x+25} ${position.y+15}
-                                    C ${position.x+30} ${position.y+10}, ${position.x+30} ${position.y-10}, ${position.x+25} ${position.y-15}
-                                    C ${position.x+10} ${position.y-20}, ${position.x-10} ${position.y-20}, ${position.x-25} ${position.y-15} Z`}
-                                {...commonProps}
-                              />
-                            );
-                          case 'parietal':
-                            // Parietal lobe - crown-like shape
-                            return (
-                              <path
-                                d={`M ${position.x-20} ${position.y-10} 
-                                    C ${position.x-25} ${position.y-15}, ${position.x-15} ${position.y-25}, ${position.x} ${position.y-20}
-                                    C ${position.x+15} ${position.y-25}, ${position.x+25} ${position.y-15}, ${position.x+20} ${position.y-10}
-                                    C ${position.x+25} ${position.y+5}, ${position.x+15} ${position.y+15}, ${position.x} ${position.y+10}
-                                    C ${position.x-15} ${position.y+15}, ${position.x-25} ${position.y+5}, ${position.x-20} ${position.y-10} Z`}
-                                {...commonProps}
-                              />
-                            );
-                          case 'temporal':
-                            // Temporal lobe - elongated lateral shape
-                            return (
-                              <ellipse
-                                cx={position.x}
-                                cy={position.y}
-                                rx="25"
-                                ry="12"
-                                {...commonProps}
-                              />
-                            );
-                          case 'occipital':
-                            // Occipital lobe - posterior pointed shape
-                            return (
-                              <path
-                                d={`M ${position.x-15} ${position.y-12} 
-                                    C ${position.x-20} ${position.y-5}, ${position.x-20} ${position.y+5}, ${position.x-15} ${position.y+12}
-                                    C ${position.x-5} ${position.y+15}, ${position.x+5} ${position.y+15}, ${position.x+15} ${position.y+12}
-                                    C ${position.x+25} ${position.y+5}, ${position.x+30} ${position.y-5}, ${position.x+25} ${position.y-12}
-                                    C ${position.x+15} ${position.y-15}, ${position.x-5} ${position.y-15}, ${position.x-15} ${position.y-12} Z`}
-                                {...commonProps}
-                              />
-                            );
-                          case 'hippocampus':
-                            // Hippocampus - seahorse-like curved shape
-                            return (
-                              <path
-                                d={`M ${position.x-8} ${position.y-15} 
-                                    C ${position.x-12} ${position.y-10}, ${position.x-10} ${position.y-5}, ${position.x-5} ${position.y}
-                                    C ${position.x} ${position.y+5}, ${position.x+5} ${position.y+10}, ${position.x+8} ${position.y+15}
-                                    C ${position.x+12} ${position.y+12}, ${position.x+15} ${position.y+8}, ${position.x+10} ${position.y+5}
-                                    C ${position.x+5} ${position.y}, ${position.x} ${position.y-5}, ${position.x-5} ${position.y-10}
-                                    C ${position.x-8} ${position.y-12}, ${position.x-8} ${position.y-15} Z`}
-                                {...commonProps}
-                              />
-                            );
-                          case 'cerebellum':
-                            // Cerebellum - folded, segmented appearance
+                            // Prefrontal cortex - anatomically accurate anterior region
                             return (
                               <g>
-                                <ellipse cx={position.x} cy={position.y} rx="20" ry="15" {...commonProps} />
                                 <path
-                                  d={`M ${position.x-15} ${position.y-5} Q ${position.x-5} ${position.y-8}, ${position.x+5} ${position.y-5} Q ${position.x+15} ${position.y-8}, ${position.x+15} ${position.y-5}`}
+                                  d={`M ${position.x-35} ${position.y-20} 
+                                      C ${position.x-40} ${position.y-15}, ${position.x-42} ${position.y-5}, ${position.x-40} ${position.y+5}
+                                      C ${position.x-35} ${position.y+15}, ${position.x-25} ${position.y+25}, ${position.x-10} ${position.y+28}
+                                      C ${position.x+10} ${position.y+30}, ${position.x+25} ${position.y+25}, ${position.x+35} ${position.y+15}
+                                      C ${position.x+40} ${position.y+5}, ${position.x+38} ${position.y-5}, ${position.x+35} ${position.y-15}
+                                      C ${position.x+25} ${position.y-25}, ${position.x+10} ${position.y-28}, ${position.x-10} ${position.y-28}
+                                      C ${position.x-25} ${position.y-25}, ${position.x-35} ${position.y-20} Z`}
+                                  {...commonProps}
+                                />
+                                <path
+                                  d={`M ${position.x-25} ${position.y-10} C ${position.x-15} ${position.y-15}, ${position.x+15} ${position.y-15}, ${position.x+25} ${position.y-10}`}
                                   fill="none"
                                   stroke="white"
                                   strokeWidth="1"
-                                  opacity="0.7"
+                                  opacity="0.6"
                                 />
                                 <path
-                                  d={`M ${position.x-15} ${position.y} Q ${position.x-5} ${position.y-3}, ${position.x+5} ${position.y} Q ${position.x+15} ${position.y-3}, ${position.x+15} ${position.y}`}
+                                  d={`M ${position.x-20} ${position.y+5} C ${position.x-10} ${position.y}, ${position.x+10} ${position.y}, ${position.x+20} ${position.y+5}`}
                                   fill="none"
                                   stroke="white"
                                   strokeWidth="1"
-                                  opacity="0.7"
+                                  opacity="0.6"
+                                />
+                              </g>
+                            );
+                          case 'parietal':
+                            // Superior parietal cortex - crown region
+                            return (
+                              <g>
+                                <path
+                                  d={`M ${position.x-25} ${position.y-5} 
+                                      C ${position.x-30} ${position.y-15}, ${position.x-25} ${position.y-25}, ${position.x-10} ${position.y-30}
+                                      C ${position.x+10} ${position.y-32}, ${position.x+25} ${position.y-25}, ${position.x+30} ${position.y-15}
+                                      C ${position.x+32} ${position.y-5}, ${position.x+30} ${position.y+5}, ${position.x+25} ${position.y+15}
+                                      C ${position.x+15} ${position.y+20}, ${position.x} ${position.y+18}, ${position.x-15} ${position.y+20}
+                                      C ${position.x-25} ${position.y+15}, ${position.x-28} ${position.y+5}, ${position.x-25} ${position.y-5} Z`}
+                                  {...commonProps}
                                 />
                                 <path
-                                  d={`M ${position.x-15} ${position.y+5} Q ${position.x-5} ${position.y+2}, ${position.x+5} ${position.y+5} Q ${position.x+15} ${position.y+2}, ${position.x+15} ${position.y+5}`}
+                                  d={`M ${position.x-15} ${position.y-15} C ${position.x-5} ${position.y-20}, ${position.x+5} ${position.y-20}, ${position.x+15} ${position.y-15}`}
                                   fill="none"
                                   stroke="white"
                                   strokeWidth="1"
-                                  opacity="0.7"
+                                  opacity="0.6"
                                 />
+                              </g>
+                            );
+                          case 'temporal':
+                            // Temporal lobe - lateral elongated region
+                            return (
+                              <g>
+                                <path
+                                  d={`M ${position.x-30} ${position.y-8} 
+                                      C ${position.x-35} ${position.y-5}, ${position.x-35} ${position.y+5}, ${position.x-30} ${position.y+8}
+                                      C ${position.x-20} ${position.y+18}, ${position.x-5} ${position.y+20}, ${position.x+15} ${position.y+18}
+                                      C ${position.x+30} ${position.y+15}, ${position.x+35} ${position.y+8}, ${position.x+32} ${position.y-2}
+                                      C ${position.x+28} ${position.y-12}, ${position.x+15} ${position.y-18}, ${position.x-5} ${position.y-20}
+                                      C ${position.x-20} ${position.y-18}, ${position.x-30} ${position.y-8} Z`}
+                                  {...commonProps}
+                                />
+                                <path
+                                  d={`M ${position.x-20} ${position.y-5} C ${position.x-10} ${position.y-8}, ${position.x+10} ${position.y-8}, ${position.x+20} ${position.y-5}`}
+                                  fill="none"
+                                  stroke="white"
+                                  strokeWidth="1"
+                                  opacity="0.6"
+                                />
+                                <path
+                                  d={`M ${position.x-15} ${position.y+5} C ${position.x-5} ${position.y+8}, ${position.x+5} ${position.y+8}, ${position.x+15} ${position.y+5}`}
+                                  fill="none"
+                                  stroke="white"
+                                  strokeWidth="1"
+                                  opacity="0.6"
+                                />
+                              </g>
+                            );
+                          case 'occipital':
+                            // Occipital lobe - posterior visual cortex
+                            return (
+                              <g>
+                                <path
+                                  d={`M ${position.x-20} ${position.y-15} 
+                                      C ${position.x-25} ${position.y-10}, ${position.x-25} ${position.y+10}, ${position.x-20} ${position.y+15}
+                                      C ${position.x-10} ${position.y+20}, ${position.x+5} ${position.y+18}, ${position.x+15} ${position.y+15}
+                                      C ${position.x+25} ${position.y+10}, ${position.x+30} ${position.y}, ${position.x+25} ${position.y-10}
+                                      C ${position.x+15} ${position.y-18}, ${position.x+5} ${position.y-20}, ${position.x-10} ${position.y-20}
+                                      C ${position.x-20} ${position.y-15} Z`}
+                                  {...commonProps}
+                                />
+                                <path
+                                  d={`M ${position.x-10} ${position.y-8} C ${position.x} ${position.y-12}, ${position.x+10} ${position.y-8}`}
+                                  fill="none"
+                                  stroke="white"
+                                  strokeWidth="1"
+                                  opacity="0.6"
+                                />
+                                <path
+                                  d={`M ${position.x-10} ${position.y+2} C ${position.x} ${position.y-2}, ${position.x+10} ${position.y+2}`}
+                                  fill="none"
+                                  stroke="white"
+                                  strokeWidth="1"
+                                  opacity="0.6"
+                                />
+                              </g>
+                            );
+                          case 'hippocampus':
+                            // Hippocampus - seahorse-like curved structure
+                            return (
+                              <g>
+                                <path
+                                  d={`M ${position.x-10} ${position.y-18} 
+                                      C ${position.x-15} ${position.y-15}, ${position.x-15} ${position.y-8}, ${position.x-10} ${position.y-2}
+                                      C ${position.x-5} ${position.y+5}, ${position.x} ${position.y+12}, ${position.x+5} ${position.y+18}
+                                      C ${position.x+10} ${position.y+15}, ${position.x+15} ${position.y+10}, ${position.x+12} ${position.y+5}
+                                      C ${position.x+8} ${position.y}, ${position.x+5} ${position.y-5}, ${position.x} ${position.y-10}
+                                      C ${position.x-5} ${position.y-15}, ${position.x-10} ${position.y-18} Z`}
+                                  {...commonProps}
+                                />
+                                <path
+                                  d={`M ${position.x-8} ${position.y-10} C ${position.x-3} ${position.y-5}, ${position.x+2} ${position.y}, ${position.x+7} ${position.y+5}`}
+                                  fill="none"
+                                  stroke="white"
+                                  strokeWidth="1"
+                                  opacity="0.6"
+                                />
+                              </g>
+                            );
+                          case 'cerebellum':
+                            // Cerebellum - detailed folded structure
+                            return (
+                              <g>
+                                <ellipse cx={position.x} cy={position.y} rx="28" ry="20" {...commonProps} />
+                                <g opacity="0.8">
+                                  <path d={`M ${position.x-25} ${position.y-10} Q ${position.x-15} ${position.y-15}, ${position.x-5} ${position.y-10} Q ${position.x+5} ${position.y-15}, ${position.x+15} ${position.y-10} Q ${position.x+25} ${position.y-15}, ${position.x+25} ${position.y-10}`} stroke="white" strokeWidth="1" fill="none"/>
+                                  <path d={`M ${position.x-25} ${position.y-5} Q ${position.x-15} ${position.y-10}, ${position.x-5} ${position.y-5} Q ${position.x+5} ${position.y-10}, ${position.x+15} ${position.y-5} Q ${position.x+25} ${position.y-10}, ${position.x+25} ${position.y-5}`} stroke="white" strokeWidth="1" fill="none"/>
+                                  <path d={`M ${position.x-25} ${position.y} Q ${position.x-15} ${position.y-5}, ${position.x-5} ${position.y} Q ${position.x+5} ${position.y-5}, ${position.x+15} ${position.y} Q ${position.x+25} ${position.y-5}, ${position.x+25} ${position.y}`} stroke="white" strokeWidth="1" fill="none"/>
+                                  <path d={`M ${position.x-25} ${position.y+5} Q ${position.x-15} ${position.y}, ${position.x-5} ${position.y+5} Q ${position.x+5} ${position.y}, ${position.x+15} ${position.y+5} Q ${position.x+25} ${position.y}, ${position.x+25} ${position.y+5}`} stroke="white" strokeWidth="1" fill="none"/>
+                                  <path d={`M ${position.x-25} ${position.y+10} Q ${position.x-15} ${position.y+5}, ${position.x-5} ${position.y+10} Q ${position.x+5} ${position.y+5}, ${position.x+15} ${position.y+10} Q ${position.x+25} ${position.y+5}, ${position.x+25} ${position.y+10}`} stroke="white" strokeWidth="1" fill="none"/>
+                                </g>
                               </g>
                             );
                           default:
@@ -361,38 +413,64 @@ export default function InteractiveBrainMap() {
                       return (
                         <g key={key}>
                           {getRegionShape(key, pos)}
+                          {/* Region label with better positioning */}
                           <text
                             x={pos.x}
-                            y={pos.y + 35}
+                            y={pos.y + 45}
                             textAnchor="middle"
-                            className="text-xs font-medium fill-gray-700 cursor-pointer"
+                            className="text-xs font-semibold fill-gray-800 cursor-pointer"
                             onClick={() => setSelectedRegion(selectedRegion === key ? null : key)}
                           >
-                            {region.name.split(' ')[1] || region.name.split(' ')[0]}
+                            {key === 'frontal' ? 'Prefrontal' : 
+                             key === 'parietal' ? 'Parietal' :
+                             key === 'temporal' ? 'Temporal' :
+                             key === 'occipital' ? 'Occipital' :
+                             key === 'hippocampus' ? 'Hipocampo' :
+                             key === 'cerebellum' ? 'Cerebelo' : region.name.split(' ')[1] || region.name.split(' ')[0]}
                           </text>
+                          
+                          {/* Background for text readability */}
+                          <rect
+                            x={pos.x - 25}
+                            y={pos.y + 35}
+                            width={50}
+                            height={15}
+                            fill="white"
+                            opacity="0.8"
+                            rx="3"
+                            className="cursor-pointer"
+                            onClick={() => setSelectedRegion(selectedRegion === key ? null : key)}
+                          />
                         </g>
                       );
                     })}
                     
-                    {/* Neural connections - anatomically correct pathways */}
-                    <g className="animate-pulse" opacity="0.3">
-                      <path d="M 140 120 Q 200 100, 260 110" stroke="#3B82F6" strokeWidth="2" fill="none"/>
-                      <path d="M 180 180 Q 220 140, 260 110" stroke="#8B5CF6" strokeWidth="2" fill="none"/>
-                      <path d="M 220 160 Q 280 160, 340 160" stroke="#10B981" strokeWidth="2" fill="none"/>
-                      <path d="M 260 110 Q 300 165, 320 220" stroke="#F59E0B" strokeWidth="2" fill="none"/>
-                      <path d="M 180 180 Q 250 200, 320 220" stroke="#EF4444" strokeWidth="2" fill="none"/>
+                    {/* Neural connections - scientifically accurate pathways */}
+                    <g className="animate-pulse" opacity="0.4">
+                      <path d="M 150 130 Q 215 105, 280 115" stroke="#3B82F6" strokeWidth="2" fill="none"/>
+                      <path d="M 190 190 Q 235 152, 280 115" stroke="#8B5CF6" strokeWidth="2" fill="none"/>
+                      <path d="M 230 170 Q 305 167, 380 165" stroke="#10B981" strokeWidth="2" fill="none"/>
+                      <path d="M 280 115 Q 330 175, 385 230" stroke="#F59E0B" strokeWidth="2" fill="none"/>
+                      <path d="M 190 190 Q 285 210, 385 230" stroke="#EF4444" strokeWidth="2" fill="none"/>
+                      <path d="M 230 170 Q 255 150, 280 115" stroke="#6366F1" strokeWidth="1.5" fill="none"/>
                     </g>
                     
                     {/* Neural activity indicators */}
                     <g className="animate-pulse">
-                      <circle cx="150" cy="110" r="3" fill="#60A5FA" opacity="0.8">
+                      <circle cx="160" cy="120" r="3" fill="#60A5FA" opacity="0.8">
                         <animate attributeName="r" values="3;6;3" dur="2s" repeatCount="indefinite"/>
                       </circle>
-                      <circle cx="270" cy="100" r="3" fill="#A78BFA" opacity="0.8">
+                      <circle cx="290" cy="105" r="3" fill="#A78BFA" opacity="0.8">
                         <animate attributeName="r" values="3;6;3" dur="2.5s" repeatCount="indefinite"/>
                       </circle>
-                      <circle cx="200" cy="170" r="3" fill="#34D399" opacity="0.8">
+                      <circle cx="200" cy="180" r="3" fill="#34D399" opacity="0.8">
                         <animate attributeName="r" values="3;6;3" dur="3s" repeatCount="indefinite"/>
+                      </circle>
+                      <circle cx="390" cy="155" r="3" fill="#F59E0B" opacity="0.8">
+                        <animate attributeName="r" values="3;6;3" dur="3.5s" repeatCount="indefinite"/>
+                      </circle>
+                      <circle cx="240" cy="160" r="3" fill="#EF4444" opacity="0.8">
+                        <animate attributeName="r" values="3;6;3" dur="4s" repeatCount="indefinite"/>
                       </circle>
                     </g>
                   </svg>
