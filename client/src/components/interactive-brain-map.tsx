@@ -135,7 +135,20 @@ export default function InteractiveBrainMap() {
               <div className="relative">
                 <div className="bg-gradient-to-br from-blue-100 to-purple-100 rounded-xl p-8 h-96 flex items-center justify-center">
                   <svg viewBox="0 0 500 350" className="w-full h-full">
-                    {/* Brain outline - realistic shape */}
+                    {/* Detailed brain anatomy background */}
+                    <defs>
+                      <linearGradient id="brainGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" style={{stopColor:"#f8fafc", stopOpacity:0.8}} />
+                        <stop offset="50%" style={{stopColor:"#e2e8f0", stopOpacity:0.6}} />
+                        <stop offset="100%" style={{stopColor:"#cbd5e1", stopOpacity:0.4}} />
+                      </linearGradient>
+                      <pattern id="brainTexture" patternUnits="userSpaceOnUse" width="4" height="4">
+                        <rect width="4" height="4" fill="none"/>
+                        <circle cx="2" cy="2" r="0.5" fill="#94a3b8" opacity="0.3"/>
+                      </pattern>
+                    </defs>
+                    
+                    {/* Main brain outline - anatomically correct sagittal view */}
                     <path
                       d="M 100 180 
                          C 80 120, 120 80, 180 70
@@ -147,33 +160,88 @@ export default function InteractiveBrainMap() {
                          C 260 305, 230 300, 200 295
                          C 170 290, 140 280, 120 260
                          C 105 240, 100 210, 100 180 Z"
-                      fill="rgba(199, 210, 254, 0.3)"
+                      fill="url(#brainGradient)"
                       stroke="#6366F1"
-                      strokeWidth="3"
-                      className="animate-pulse"
+                      strokeWidth="2"
+                      opacity="0.3"
                     />
                     
-                    {/* Brain stem */}
-                    <ellipse cx="260" cy="300" rx="15" ry="25" fill="rgba(139, 92, 246, 0.4)" stroke="#8B5CF6" strokeWidth="2"/>
+                    {/* Brain stem detailed structure */}
+                    <ellipse cx="260" cy="300" rx="12" ry="20" fill="#8B5CF6" opacity="0.4"/>
+                    <ellipse cx="260" cy="295" rx="8" ry="15" fill="#A78BFA" opacity="0.3"/>
+                    <ellipse cx="260" cy="290" rx="5" ry="10" fill="#C4B5FD" opacity="0.2"/>
                     
-                    {/* Cerebral fissure */}
+                    {/* Cerebral fissures and sulci */}
                     <path
-                      d="M 180 120 C 220 110, 280 110, 320 120 C 300 140, 280 150, 260 155 C 240 150, 220 140, 200 130"
+                      d="M 180 120 C 220 110, 280 110, 320 120"
+                      fill="none"
+                      stroke="#4F46E5"
+                      strokeWidth="3"
+                      opacity="0.4"
+                    />
+                    <path
+                      d="M 160 150 C 200 140, 260 140, 300 150"
                       fill="none"
                       stroke="#4F46E5"
                       strokeWidth="2"
-                      opacity="0.6"
+                      opacity="0.3"
+                    />
+                    <path
+                      d="M 140 180 C 180 170, 240 170, 280 180"
+                      fill="none"
+                      stroke="#4F46E5"
+                      strokeWidth="2"
+                      opacity="0.3"
                     />
                     
-                    {/* Brain regions with realistic anatomical shapes */}
+                    {/* Corpus callosum */}
+                    <ellipse cx="240" cy="155" rx="40" ry="8" fill="#F59E0B" opacity="0.3"/>
+                    <ellipse cx="240" cy="155" rx="35" ry="6" fill="#FCD34D" opacity="0.2"/>
+                    
+                    {/* Ventricular system */}
+                    <path
+                      d="M 200 140 C 220 135, 260 135, 280 140 C 275 150, 260 155, 240 155 C 220 155, 205 150, 200 140"
+                      fill="#3B82F6"
+                      opacity="0.2"
+                    />
+                    
+                    {/* Detailed cerebellum structure */}
+                    <ellipse cx="320" cy="220" rx="25" ry="20" fill="#6366F1" opacity="0.3"/>
+                    <g opacity="0.4">
+                      <path d="M 300 210 Q 310 205, 320 210 Q 330 205, 340 210" stroke="#4F46E5" strokeWidth="1" fill="none"/>
+                      <path d="M 300 215 Q 310 210, 320 215 Q 330 210, 340 215" stroke="#4F46E5" strokeWidth="1" fill="none"/>
+                      <path d="M 300 220 Q 310 215, 320 220 Q 330 215, 340 220" stroke="#4F46E5" strokeWidth="1" fill="none"/>
+                      <path d="M 300 225 Q 310 220, 320 225 Q 330 220, 340 225" stroke="#4F46E5" strokeWidth="1" fill="none"/>
+                      <path d="M 300 230 Q 310 225, 320 230 Q 330 225, 340 230" stroke="#4F46E5" strokeWidth="1" fill="none"/>
+                    </g>
+                    
+                    {/* Gyri and sulci pattern */}
+                    <g opacity="0.2">
+                      <path d="M 120 140 Q 140 135, 160 140 Q 180 135, 200 140" stroke="#6366F1" strokeWidth="1" fill="none"/>
+                      <path d="M 120 160 Q 140 155, 160 160 Q 180 155, 200 160" stroke="#6366F1" strokeWidth="1" fill="none"/>
+                      <path d="M 120 180 Q 140 175, 160 180 Q 180 175, 200 180" stroke="#6366F1" strokeWidth="1" fill="none"/>
+                      <path d="M 120 200 Q 140 195, 160 200 Q 180 195, 200 200" stroke="#6366F1" strokeWidth="1" fill="none"/>
+                      
+                      <path d="M 280 120 Q 300 115, 320 120 Q 340 115, 360 120" stroke="#6366F1" strokeWidth="1" fill="none"/>
+                      <path d="M 280 140 Q 300 135, 320 140 Q 340 135, 360 140" stroke="#6366F1" strokeWidth="1" fill="none"/>
+                      <path d="M 280 160 Q 300 155, 320 160 Q 340 155, 360 160" stroke="#6366F1" strokeWidth="1" fill="none"/>
+                      <path d="M 280 180 Q 300 175, 320 180 Q 340 175, 360 180" stroke="#6366F1" strokeWidth="1" fill="none"/>
+                    </g>
+                    
+                    {/* Textured brain regions for realism */}
+                    <rect x="100" y="100" width="150" height="100" fill="url(#brainTexture)" opacity="0.1"/>
+                    <rect x="250" y="100" width="150" height="100" fill="url(#brainTexture)" opacity="0.1"/>
+                    
+                    {/* Brain regions with anatomically correct positions */}
                     {Object.entries(brainRegions).map(([key, region], index) => {
+                      // Positions adjusted to match real brain anatomy in sagittal view
                       const positions = {
-                        frontal: { x: 160, y: 140 },
-                        parietal: { x: 280, y: 130 },
-                        temporal: { x: 200, y: 200 },
-                        occipital: { x: 350, y: 180 },
-                        hippocampus: { x: 240, y: 180 },
-                        cerebellum: { x: 320, y: 240 }
+                        frontal: { x: 140, y: 120 },      // Anterior frontal region
+                        parietal: { x: 260, y: 110 },     // Superior parietal region
+                        temporal: { x: 180, y: 180 },     // Lateral temporal region
+                        occipital: { x: 340, y: 160 },    // Posterior occipital region
+                        hippocampus: { x: 220, y: 160 },  // Deep medial temporal
+                        cerebellum: { x: 320, y: 220 }    // Posterior inferior position
                       };
                       const pos = positions[key] || { x: 200, y: 150 };
                       
@@ -306,24 +374,24 @@ export default function InteractiveBrainMap() {
                       );
                     })}
                     
-                    {/* Neural connections - realistic pathways */}
-                    <g className="animate-pulse" opacity="0.4">
-                      <path d="M 160 140 Q 220 120, 280 130" stroke="#3B82F6" strokeWidth="2" fill="none"/>
-                      <path d="M 200 200 Q 240 160, 280 130" stroke="#8B5CF6" strokeWidth="2" fill="none"/>
-                      <path d="M 240 180 Q 290 180, 350 180" stroke="#10B981" strokeWidth="2" fill="none"/>
-                      <path d="M 280 130 Q 315 185, 320 240" stroke="#F59E0B" strokeWidth="2" fill="none"/>
-                      <path d="M 200 200 Q 270 220, 320 240" stroke="#EF4444" strokeWidth="2" fill="none"/>
+                    {/* Neural connections - anatomically correct pathways */}
+                    <g className="animate-pulse" opacity="0.3">
+                      <path d="M 140 120 Q 200 100, 260 110" stroke="#3B82F6" strokeWidth="2" fill="none"/>
+                      <path d="M 180 180 Q 220 140, 260 110" stroke="#8B5CF6" strokeWidth="2" fill="none"/>
+                      <path d="M 220 160 Q 280 160, 340 160" stroke="#10B981" strokeWidth="2" fill="none"/>
+                      <path d="M 260 110 Q 300 165, 320 220" stroke="#F59E0B" strokeWidth="2" fill="none"/>
+                      <path d="M 180 180 Q 250 200, 320 220" stroke="#EF4444" strokeWidth="2" fill="none"/>
                     </g>
                     
                     {/* Neural activity indicators */}
                     <g className="animate-pulse">
-                      <circle cx="180" cy="120" r="3" fill="#60A5FA" opacity="0.8">
+                      <circle cx="150" cy="110" r="3" fill="#60A5FA" opacity="0.8">
                         <animate attributeName="r" values="3;6;3" dur="2s" repeatCount="indefinite"/>
                       </circle>
-                      <circle cx="300" cy="110" r="3" fill="#A78BFA" opacity="0.8">
+                      <circle cx="270" cy="100" r="3" fill="#A78BFA" opacity="0.8">
                         <animate attributeName="r" values="3;6;3" dur="2.5s" repeatCount="indefinite"/>
                       </circle>
-                      <circle cx="220" cy="180" r="3" fill="#34D399" opacity="0.8">
+                      <circle cx="200" cy="170" r="3" fill="#34D399" opacity="0.8">
                         <animate attributeName="r" values="3;6;3" dur="3s" repeatCount="indefinite"/>
                       </circle>
                     </g>
