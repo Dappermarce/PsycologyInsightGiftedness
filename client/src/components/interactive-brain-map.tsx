@@ -173,7 +173,7 @@ export default function InteractiveBrainMap() {
                       fill="url(#brainGradient)"
                       stroke="#6366F1"
                       strokeWidth="2"
-                      opacity="0.4"
+                      opacity="0.65"
                     />
                     
                     {/* Brain shadow for depth */}
@@ -190,7 +190,7 @@ export default function InteractiveBrainMap() {
                          C 170 278, 145 265, 125 250
                          C 105 235, 93 210, 95 180 Z"
                       fill="url(#brainShadow)"
-                      opacity="0.2"
+                      opacity="0.3"
                     />
                     
                     {/* Cerebral cortex layers */}
